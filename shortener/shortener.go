@@ -2,8 +2,8 @@ package shortener
 
 import (
   "crypto/sha1"
-	"encoding/hex"
-	"regexp"
+  "encoding/hex"
+  "regexp"
 )
 
 // Shortener has methods for short url and resolve url
