@@ -10,11 +10,11 @@ var testCases = []struct {
 }{
 	{
 		url: "https://otus.ru/some_path?q=23&t=d",
-		shortenUrl: "https://otus.ru/f936aa457250641ab48097aa004d2cdae50a85eb",
+		shortenUrl: "https://otus.ru/f936",
 	},
 	{
 		url: "otus.ru/some_path?q=23&t=d",
-		shortenUrl: "otus.ru/bd57c13ccf02e0501b4fb310c241980e3514d42b",
+		shortenUrl: "otus.ru/bd57",
 	},
 	{
 		url: "https://otus.ru/",
