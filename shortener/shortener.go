@@ -41,7 +41,7 @@ func Resolve(rawURL string) string {
 }
 
 func hasher(text string) string {
-  	algorithm := sha1.New()
-    algorithm.Write([]byte(text))
-		return hex.EncodeToString(algorithm.Sum(nil))[0:4]
+  algorithm := sha1.New()
+  algorithm.Write([]byte(text))
+	return hex.EncodeToString(algorithm.Sum(nil))[0:4]
 }
