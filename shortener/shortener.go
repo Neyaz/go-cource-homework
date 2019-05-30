@@ -24,7 +24,7 @@ func Shorten(rawURL string) string {
 	if path == "" {
 		shortURL = rawURL
 	} else {
-		hash = Hasher(rawURL)
+		hash = hasher(rawURL)
 		shortURL = matchArr[0] + hash
 		urlAccociation[hash] = rawURL
 	}
@@ -40,8 +40,7 @@ func Resolve(rawURL string) string {
 	return urlAccociation[path]
 }
 
-// Hasher get string and return hash
-func Hasher(text string) string {
+func hasher(text string) string {
   	algorithm := sha1.New()
     algorithm.Write([]byte(text))
 		return hex.EncodeToString(algorithm.Sum(nil))[0:4]
