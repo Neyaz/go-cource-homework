@@ -14,8 +14,8 @@ type Shortener interface {
 
 // MyShortener has storage map
 type MyShortener struct { 
-	storage map[string]string
- }
+  storage map[string]string
+}
 
 var re = regexp.MustCompile(`(?:https?:\/\/)?(?:[a-zA-Z0-9.-]+?\.(?:[a-zA-Z])+)\/?`)
 
