@@ -27,8 +27,9 @@ var testCases = []struct {
 }
 
 func TestShorten(t *testing.T) {
+	s := MyShortener{storage: make(map[string]string)}
   for _, c := range testCases {
-    actual := Shorten(c.url)
+    actual := s.Shorten(c.url)
     if actual != c.shortenURL {
       t.Fatalf("FAIL: URL %q, expected %q, got %q", c.url, c.shortenURL, actual)
     }
@@ -38,12 +39,13 @@ func TestShorten(t *testing.T) {
 }
 
 func TestResolve(t *testing.T) {
+	s := MyShortener{storage: make(map[string]string)}
   for _, c := range testCases {
-    Shorten(c.url)
+    s.Shorten(c.url)
   }
 
   for _, c := range testCases {
-    actual := Resolve(c.shortenURL)
+    actual := s.Resolve(c.shortenURL)
     if actual != c.url {
       t.Fatalf("FAIL: URL %q, expected %q, got %q", c.shortenURL, c.url, actual)
     }
