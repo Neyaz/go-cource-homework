@@ -12,7 +12,7 @@ var analizeTestCases = []struct {
 	{
 		text:     "one one one two",
 		list:     []string{"one", "two"},
-	}
+	},
 }
 
 func TestAnalize(t *testing.T) {
