@@ -6,8 +6,8 @@ import (
 
 // Node of linked list
 type Node struct {
-  value string
-  next, prev *Node
+	value      string
+	next, prev *Node
 }
 
 // DoublyLinkedList doubly linked list
@@ -37,33 +37,41 @@ func (n *Node) Prev() *Node {
 
 // HeadPush add new node to the head of the list
 func (l *DoublyLinkedList) HeadPush(v string) *DoublyLinkedList {
-  n := &Node{value: v}
-	if l.head == nil {
-		l.head = n
-	} else {
-		l.tail.next = n
-		n.prev = l.tail
+	n := &Node{value: v}
+	if l.tail == nil {
+		l.tail = n
 	}
-	l.tail = n
+
+	if l.head != nil {
+		if l.head.next == nil {
+			l.tail = l.head
+		}
+
+		l.head.prev = n
+		n.next = l.head
+	}
+
+	l.head = n
 	return l
 }
 
 // TailPush add new node to the end of the list
-func (l *DoublyLinkedList) TailPush(v string) (*DoublyLinkedList, error) {
-  n := &Node{value: v}
-  if l.head == nil && l.tail == nil {
-      return nil, errors.New("No head in the list")
-  }
-
-  if l.tail == nil {
-    n.prev = l.head
-    l.head.next = n
-  } else {
-    n.prev = l.tail
-    l.tail.next = n
-  }
+func (l *DoublyLinkedList) TailPush(v string) *DoublyLinkedList {
+	n := &Node{value: v}
+	if l.head == nil && l.tail == nil {
+		l.head = n
+	} else if l.tail == nil {
+    if l.tail.prev == nil {
+      l.head = l.tail
+    }
+		n.prev = l.head
+		l.head.next = n
+	} else {
+		n.prev = l.tail
+		l.tail.next = n
+	}
 	l.tail = n
-	return l, nil
+	return l
 }
 
 // Find node in the list
@@ -78,27 +86,28 @@ func (l *DoublyLinkedList) Find(value string) *Node {
 
 // HeadPop removes head
 func (l *DoublyLinkedList) HeadPop() (*DoublyLinkedList, error) {
-  if l.head == nil {
-      return nil, errors.New("No head in the list")
-  }
+	if l.head == nil && l.tail == nil {
+		return nil, errors.New("Empty list")
+	}
 
-  l.head.next.prev = nil
+	l.head.next.prev = nil
   l.head = l.head.next
+  l.head.prev = nil
 	return l, nil
 }
 
 // TailPop removes head
 func (l *DoublyLinkedList) TailPop() (*DoublyLinkedList, error) {
-  if l.head == nil {
-      return nil, errors.New("No head in the list")
-  }
+	if l.head == nil && l.tail == nil {
+		return nil, errors.New("Empty list")
+	}
 
-  if l.tail == nil {
-    l.head = nil
-  } else {
-    l.tail.prev.next = nil
-    l.tail = l.tail.prev
-  }
+	if l.tail == nil {
+		l.head = nil
+	} else {
+		l.tail.prev.next = nil
+		l.tail = l.tail.prev
+	}
 	return l, nil
 }
 
