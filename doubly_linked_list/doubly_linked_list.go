@@ -61,9 +61,9 @@ func (l *DoublyLinkedList) TailPush(v string) *DoublyLinkedList {
 	if l.head == nil && l.tail == nil {
 		l.head = n
 	} else if l.tail == nil {
-    if l.tail.prev == nil {
-      l.head = l.tail
-    }
+		if l.tail.prev == nil {
+			l.head = l.tail
+		}
 		n.prev = l.head
 		l.head.next = n
 	} else {
@@ -91,8 +91,8 @@ func (l *DoublyLinkedList) HeadPop() (*DoublyLinkedList, error) {
 	}
 
 	l.head.next.prev = nil
-  l.head = l.head.next
-  l.head.prev = nil
+	l.head = l.head.next
+	l.head.prev = nil
 	return l, nil
 }
 

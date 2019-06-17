@@ -74,7 +74,7 @@ func TestTailPushTwoElements(t *testing.T) {
 	list.TailPush("2")
 
 	if list.head.value != "1" ||
-		list.tail.value != "2"||
+		list.tail.value != "2" ||
 		list.head.next.value != "2" ||
 		list.tail.prev.value != "1" {
 		t.Fatalf("Push Failure")
@@ -168,7 +168,7 @@ func TestTailPop(t *testing.T) {
 		list.head.next.value != "2" ||
 		list.tail.prev.value != "3" ||
 		list.tail.next != nil ||
-		list.head.prev != nil  {
+		list.head.prev != nil {
 		t.Fatalf("Pop Failure")
 	}
 
@@ -188,7 +188,7 @@ func TestTailPopTwoTimes(t *testing.T) {
 		list.tail.prev != nil ||
 		list.head.next != nil ||
 		list.tail.next != nil ||
-		list.head.prev != nil  {
+		list.head.prev != nil {
 		t.Fatalf("Pop Failure")
 	}
 
